@@ -7,6 +7,8 @@ public class InputManagerBasedInputProvider : MonoBehaviour, IPlayerInputProvide
     
     public event Action onMoved;
     
+    public event Action OnInteracted;
+
     public Vector2 RotationDirection { get; private set; }
     
     public Vector2 MoveDirection { get; private set; }
@@ -39,11 +41,20 @@ public class InputManagerBasedInputProvider : MonoBehaviour, IPlayerInputProvide
     {
         IsSprinting = Input.GetKey(KeyCode.LeftShift) && MoveDirection.magnitude != 0;
     }
+
+    private void UpdateInteractionInput()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            OnInteracted?.Invoke();
+        }
+    }
     
     private void Update()
     {
         UpdateRotationInput();
         UpdateMoveInput();
         UpdateSprintInput();
+        UpdateInteractionInput();
     }
 }
