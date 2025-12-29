@@ -25,6 +25,10 @@ namespace Editor.PropertyDrawer
 			{
 				property.objectReferenceValue = obj;
 			}
+			else if (obj is GameObject go && go.TryGetComponent(attr.type, out Component comp))
+			{
+				property.objectReferenceValue = comp;
+			}
 			else
 			{
 				property.objectReferenceValue = old;
