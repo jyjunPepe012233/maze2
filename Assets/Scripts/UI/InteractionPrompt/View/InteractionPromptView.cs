@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace UI.Interaction.View
+namespace UI.InteractionPrompt.View
 {
 
 	public class InteractionPromptView : MonoBehaviour

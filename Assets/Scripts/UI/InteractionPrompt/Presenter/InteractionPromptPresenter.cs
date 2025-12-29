@@ -1,9 +1,9 @@
 using Core.Attributes;
-using UI.Interaction.Model;
-using UI.Interaction.View;
+using UI.InteractionPrompt.View;
+using UI.Models.Interaction;
 using UnityEngine;
 
-namespace UI.Interaction.Presenter
+namespace UI.InteractionPrompt.Presenter
 {
 
 	public class InteractionPromptPresenter : MonoBehaviour
@@ -19,9 +19,9 @@ namespace UI.Interaction.Presenter
 			var interactionModel = _interactionModel as IInteractionModel;
 			if (interactionModel == null) return;
 
-			if (interactionModel.ShouldShowPrompt != _view.IsVisible)
+			if (interactionModel.IsInteractable != _view.IsVisible)
 			{
-				if (interactionModel.ShouldShowPrompt)
+				if (interactionModel.IsInteractable)
 				{
 					_view.ShowPrompt(interactionModel.PromptContent);
 				}

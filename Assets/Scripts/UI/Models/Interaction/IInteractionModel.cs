@@ -1,9 +1,9 @@
-namespace UI.Interaction.Model
+namespace UI.Models.Interaction
 {
 
 	public interface IInteractionModel
 	{
-		bool ShouldShowPrompt { get; }
+		bool IsInteractable { get; }
 		
 		string PromptContent { get; }
 	}

@@ -3,15 +3,15 @@ using Components.Player.Interaction;
 using Core.Attributes;
 using UnityEngine;
 
-namespace UI.Interaction.Model
+namespace UI.Models.Interaction.Impl
 {
 
-	public class InteractionModel : MonoBehaviour, IInteractionModel
+	public class PlayerInteractionModel : MonoBehaviour, IInteractionModel
 	{
 		[SerializeField, RequireImplement(typeof(IInteractionEventProvider))]
 		private Object _interactionEventProvider;
 		
-		public bool ShouldShowPrompt { get; private set; }
+		public bool IsInteractable { get; private set; }
 		
 		public string PromptContent { get; private set; }
 
@@ -26,13 +26,13 @@ namespace UI.Interaction.Model
 
 		private void OnInteractableHoverEntered(IInteractable interactable)
 		{
-			ShouldShowPrompt = true;
+			IsInteractable = true;
 			PromptContent = interactable.PromptContent;
 		}
 
 		private void OnInteractableHoverExited(IInteractable interactable)
 		{
-			ShouldShowPrompt = false;
+			IsInteractable = false;
 		}
 	}
 

@@ -4,9 +4,9 @@ using UnityEngine;
 namespace Components.Interactable
 {
 
-	public class Port : MonoBehaviour, IInteractable
+	public class PortInteractable : MonoBehaviour, IInteractable
 	{
-		public event Action onDeparted;
+		public event Action OnDeparted;
 
 		[SerializeField]
 		private bool _canInteract;
@@ -28,8 +28,7 @@ namespace Components.Interactable
 
 		public void Interact()
 		{
-			onDeparted?.Invoke();
-			Debug.Log("Departing from port!!");
+			OnDeparted?.Invoke();
 		}
 	}
 
