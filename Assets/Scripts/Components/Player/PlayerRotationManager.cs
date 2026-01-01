@@ -30,7 +30,7 @@ namespace Player.Components.Player
 
 			if (_dampedRotationFollower == null) return;
 
-			Vector3 parallelSourceDirection = locomotionStateProvider.moveWorldDirection;
+			Vector3 parallelSourceDirection = locomotionStateProvider.MoveWorldDirection;
 			parallelSourceDirection.y = 0;
 			parallelSourceDirection.Normalize();
 			

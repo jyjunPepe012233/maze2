@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Components.Interactable;
 using Core.Attributes;
+using Core.Input.CharacterControl;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -11,7 +12,7 @@ namespace Components.Player.Interaction
 
 	public class PlayerInteractor : MonoBehaviour, IInteractionEventProvider
 	{
-		[SerializeField, RequireImplement(typeof(IPlayerInputProvider))]
+		[SerializeField, RequireImplement(typeof(ICharacterControlInput))]
 		private Object _playerInputProvider;
 		
 		public float InteractionRange = 1;
@@ -28,7 +29,7 @@ namespace Components.Player.Interaction
 
 		private void Awake()
 		{
-			var inputProvider = _playerInputProvider as IPlayerInputProvider;
+			var inputProvider = _playerInputProvider as ICharacterControlInput;
 			if (inputProvider == null) return;
 
 			inputProvider.OnInteracted += Interact;

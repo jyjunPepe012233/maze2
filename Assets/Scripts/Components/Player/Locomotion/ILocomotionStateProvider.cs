@@ -7,9 +7,9 @@ namespace Player.Components.Player
 	{
 		public bool IsMoving { get; }
 		
-		public Vector3 moveWorldDirection { get; }
+		public Vector3 MoveWorldDirection { get; }
 
-		public bool isSprinting { get; }
+		public bool IsSprinting { get; }
 	}
 
 }

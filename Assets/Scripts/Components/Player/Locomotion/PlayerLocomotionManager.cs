@@ -1,4 +1,5 @@
 using Core.Attributes;
+using Core.Input.CharacterControl;
 using UnityEngine;
 
 namespace Player.Components.Player
@@ -8,11 +9,11 @@ namespace Player.Components.Player
     {
         public bool IsMoving { get; private set; }
         
-        public Vector3 moveWorldDirection { get; private set; }
+        public Vector3 MoveWorldDirection { get; private set; }
         
-        public bool isSprinting { get; }
+        public bool IsSprinting { get; }
 
-        [SerializeField, RequireImplement(typeof(IPlayerInputProvider))]
+        [SerializeField, RequireImplement(typeof(ICharacterControlInput))]
         private Object _inputProvider;
 
         [SerializeField]
@@ -31,7 +32,7 @@ namespace Player.Components.Player
         
         private void Update()
         {
-            var inputProvider = _inputProvider as IPlayerInputProvider;
+            var inputProvider = _inputProvider as ICharacterControlInput;
             if (inputProvider == null) return;
             
             if (_rotationSource == null) return;
@@ -44,9 +45,9 @@ namespace Player.Components.Player
             Vector3 parallelForward = _rotationSource.forward;
             parallelForward.y = 0;
             parallelForward.Normalize();
-            moveWorldDirection = Quaternion.LookRotation(parallelForward) * inputToLocal;
+            MoveWorldDirection = Quaternion.LookRotation(parallelForward) * inputToLocal;
 
-            Vector3 moveVector = moveWorldDirection * MoveSpeed;
+            Vector3 moveVector = MoveWorldDirection * MoveSpeed;
             if (inputProvider.IsSprinting) moveVector *= SprintingSpeedMultiplier;
 
             if (_rigidbody == null) return;

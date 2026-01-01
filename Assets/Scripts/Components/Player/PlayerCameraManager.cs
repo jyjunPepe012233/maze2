@@ -1,4 +1,5 @@
 using Core.Attributes;
+using Core.Input.CharacterControl;
 using UnityEngine;
 
 namespace Player.Components.Player
@@ -6,7 +7,7 @@ namespace Player.Components.Player
 
 	public class PlayerCameraManager : MonoBehaviour
 	{
-		[SerializeField, RequireImplement(typeof(IPlayerInputProvider))]
+		[SerializeField, RequireImplement(typeof(ICharacterControlInput))]
 		private Object _inputProvider;
 
 		[SerializeField]
@@ -25,7 +26,7 @@ namespace Player.Components.Player
 
 		private void Update()
 		{
-			var inputProvider = _inputProvider as IPlayerInputProvider;
+			var inputProvider = _inputProvider as ICharacterControlInput;
 			if (inputProvider == null) return;
 			
 			if (_camera == null) return;
