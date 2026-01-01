@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Player.Components.Player
+namespace Components.Player.Locomotion
 {
 
 	public interface ILocomotionStateProvider

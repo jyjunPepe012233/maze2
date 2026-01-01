@@ -1,4 +1,4 @@
-namespace Core.Utility
+namespace Core.Utilities
 {
 	public static class CursorUtility
 	{

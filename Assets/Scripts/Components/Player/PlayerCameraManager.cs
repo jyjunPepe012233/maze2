@@ -1,14 +1,14 @@
-using Core.Attributes;
+using Core.Input;
 using Core.Input.CharacterControl;
 using UnityEngine;
 
-namespace Player.Components.Player
+namespace Components.Player
 {
 
 	public class PlayerCameraManager : MonoBehaviour
 	{
-		[SerializeField, RequireImplement(typeof(ICharacterControlInput))]
-		private Object _inputProvider;
+		[SerializeField]
+		private InputManager _inputManager;
 
 		[SerializeField]
 		private Camera _camera;
@@ -26,7 +26,7 @@ namespace Player.Components.Player
 
 		private void Update()
 		{
-			var inputProvider = _inputProvider as ICharacterControlInput;
+			var inputProvider = _inputManager?.GetProfile("CharacterControl") as ICharacterControlInput;
 			if (inputProvider == null) return;
 			
 			if (_camera == null) return;

@@ -1,8 +1,8 @@
-using Core.Attributes;
+using Core.Input;
 using Core.Input.CharacterControl;
 using UnityEngine;
 
-namespace Player.Components.Player
+namespace Components.Player.Locomotion
 {
 
     public class PlayerLocomotionManager : MonoBehaviour, ILocomotionStateProvider
@@ -13,8 +13,8 @@ namespace Player.Components.Player
         
         public bool IsSprinting { get; }
 
-        [SerializeField, RequireImplement(typeof(ICharacterControlInput))]
-        private Object _inputProvider;
+        [SerializeField]
+        private InputManager _inputManager;
 
         [SerializeField]
         private Transform _rotationSource;
@@ -32,7 +32,7 @@ namespace Player.Components.Player
         
         private void Update()
         {
-            var inputProvider = _inputProvider as ICharacterControlInput;
+            var inputProvider = _inputManager?.GetProfile("CharacterControl") as ICharacterControlInput;
             if (inputProvider == null) return;
             
             if (_rotationSource == null) return;

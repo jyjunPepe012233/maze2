@@ -1,9 +1,8 @@
+using Components.Player.Locomotion;
 using Core.Attributes;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Player.Components.Player
+namespace Components.Player
 {
 
 	public class PlayerRotationManager : MonoBehaviour

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Core.Input.CharacterControl
 {
 
-    public class InputManagerBasedCharacterControlInput : MonoBehaviour, ICharacterControlInput
+    public class InputManagerBasedCharacterControlInput : InputProfileBehaviour, ICharacterControlInput
     {
         public event Action OnRotated;
     
