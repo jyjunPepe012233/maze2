@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Core.Input.CharacterControl
+namespace Core.Input.CharacterControl.Impl
 {
 
     public class InputManagerBasedCharacterControlInput : InputProfileBehaviour, ICharacterControlInput
@@ -12,17 +12,23 @@ namespace Core.Input.CharacterControl
     
         public event Action OnInteracted;
 
-        public Vector2 RotationDirection { get; private set; }
-    
-        public Vector2 MoveDirection { get; private set; }
-    
-        public bool IsSprinting { get; private set; }
+        private Vector2 _rotationDirection;
+
+        public Vector2 RotationDirection => IsActivate ? _rotationDirection : Vector2.zero;
+
+        private Vector2 _moveDirection;
+
+        public Vector2 MoveDirection => IsActivate ? _moveDirection : Vector2.zero;
+
+        private bool _isSprinting;
+        
+        public bool IsSprinting => IsActivate ? _isSprinting : false;
 
         private void UpdateRotationInput()
         {
             float x = UnityEngine.Input.GetAxisRaw("Mouse X");
             float y = UnityEngine.Input.GetAxisRaw("Mouse Y");
-            RotationDirection = new Vector2(x, y);
+            _rotationDirection = new Vector2(x, y);
             if (RotationDirection.magnitude != 0)
             {
                 OnRotated?.Invoke();
@@ -33,7 +39,7 @@ namespace Core.Input.CharacterControl
         { 
             float horiz = UnityEngine.Input.GetAxisRaw("Horizontal");
             float vert = UnityEngine.Input.GetAxisRaw("Vertical");
-            MoveDirection = new Vector2(horiz, vert).normalized;
+            _moveDirection = new Vector2(horiz, vert).normalized;
             if (MoveDirection.magnitude != 0)
             {
                 OnMoved?.Invoke();
@@ -42,7 +48,7 @@ namespace Core.Input.CharacterControl
 
         private void UpdateSprintInput()
         {
-            IsSprinting = UnityEngine.Input.GetKey(KeyCode.LeftShift) && MoveDirection.magnitude != 0;
+            _isSprinting = UnityEngine.Input.GetKey(KeyCode.LeftShift) && MoveDirection.magnitude != 0;
         }
 
         private void UpdateInteractionInput()

@@ -307,7 +307,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5433237027348917349}
         m_TargetAssemblyTypeName: UI.Map.View.MapView, Assembly-CSharp
-        m_MethodName: Close
+        m_MethodName: SelectClose
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -372,6 +372,8 @@ MonoBehaviour:
   _view: {fileID: 5433237027348917349}
   _portDepartureModel: {fileID: 0}
   _loadStageModel: {fileID: 0}
+  _cursorModel: {fileID: 0}
+  _menuInputModel: {fileID: 0}
 --- !u!114 &5433237027348917349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -758,7 +760,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000030517578}
+  m_AnchoredPosition: {x: 0, y: 0.0002023237}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2504883807294400611

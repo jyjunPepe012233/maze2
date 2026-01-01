@@ -16,6 +16,8 @@ namespace UI.Map.View
 
 		public event Action<IStageData> OnStageSelected;
 		
+		public event Action OnCloseSelected;
+		
 		public void Open()
 		{
 			IsVisible = true;
@@ -26,6 +28,11 @@ namespace UI.Map.View
 		{
 			IsVisible = false;
 			_mapCanvasGroup.SetVisible(false);
+		}
+
+		public void SelectClose()
+		{
+			OnCloseSelected?.Invoke();
 		}
 
 		public void SelectStage(Object stageDataObject)
