@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: test_stage_1
   m_EditorClassIdentifier: 
   _stageName: test_stage_1
-  _sceneName: TestStage1
+  _displayName: First Maze
+  _sceneName: Maze1

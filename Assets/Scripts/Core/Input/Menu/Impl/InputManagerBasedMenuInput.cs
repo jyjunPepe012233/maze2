@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Core.Input.Menu
+namespace Core.Input.Menu.Impl
 {
 
     public class InputManagerBasedMenuInput : InputProfileBehaviour, IMenuInput
